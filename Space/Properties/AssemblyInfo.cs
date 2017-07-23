@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Space")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Powered By  LiYang Email:916259616@qq.com    官网网站:http://liyang.live")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("liyang")]
 [assembly: AssemblyProduct("Space")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright ©  2017    liyang   Powered By  LiYang")]
+[assembly: AssemblyTrademark("Powered By  LiYang Email:916259616@qq.com")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 会使此程序集中的类型

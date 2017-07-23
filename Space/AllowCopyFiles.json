@@ -1,0 +1,28 @@
+﻿{
+  //允许拷贝发布文件的文件名
+  "AllowCopyFiles": [
+    {
+      "FileName": "Lenovo.HIS.IBusiness.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Common.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IBusiness.Patients.dll"
+    }
+  ],
+  "AllowCopyFolders": [
+    {
+      "FolderName": "AppDll"
+    },
+    {
+      "FolderName": "Plugin"
+    }
+  ]
+}

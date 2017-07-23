@@ -1,0 +1,160 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase
+
+@{
+    ViewBag.Title = @Model;
+}
+
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="~/Content/Jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //启动服务
+            $("#StartService").click(function () {
+                $.ajax({
+                    url: "/Service/Start",
+                    type: "GET",
+                    success: function (result) {
+                        var re = eval(result);
+                        alert("启动成功:" + re.result);
+                    }
+                });
+            });
+
+            //关闭服务
+            $("#StopService").click(function () {
+                $.ajax({
+                    url: "/Service/Stop",
+                    type: "GET",
+                    success: function (result) {
+                        var re = eval(result);
+                        alert("关闭成功:" + re.result);
+                    }
+                });
+            });
+
+            //更新项目
+            $("#UpdatePrograme").click(function () {
+                $.ajax({
+                    url: "/Programe/Update",
+                    type: "GET",
+                    success: function (result) {
+                        var re = eval(result);
+                        //alert(re.message);
+                        var html = "";
+                        $.each(re.message, function (index, item) {
+                            html += item;
+                            html += "</br>";
+                        });
+                        $("#update").html(html);
+                    }
+                });
+            });
+
+            //编译项目
+            $("#BuildPrograme").click(function () {
+                $.ajax({
+                    url: "/Programe/Build",
+                    type: "GET",
+                    success: function (result) {
+                        var re = eval(result);
+                        //alert(re.message);
+                        var html = "";
+                        $.each(re.message, function (index, item) {
+                            html += item;
+                            html += "</br></br></br>";
+                        });
+                        $("#build").html(html);
+                    }
+                });
+            });
+
+            //发布版本
+            $("#PublishPrograme").click(function () {
+                $.ajax({
+                    url: "/Programe/Publish",
+                    type: "GET",
+                    success: function (result) {
+                        var re = eval(result);
+                        //alert(re.message);
+                        var html = "";
+                        $.each(re.message, function (index, item) {
+                            html += "<a href='" + "DownLoad/" + item + "' >" + item + "</a>";
+                            html += "</br>";
+                        });
+                        $("#publish").html(html);
+                    }
+                });
+            });
+        });
+    </script>
+    <style type="text/css">
+        .xwtable {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+            .xwtable thead td {
+                font-size: 12px;
+                color: #333333;
+                text-align: center;
+                /*background: url(table_top.jpg) repeat-x top center;*/
+                border: 1px solid #ccc;
+                font-weight: bold;
+            }
+
+            .xwtable tbody tr {
+                background: #fff;
+                font-size: 12px;
+                color: #666666;
+            }
+
+                .xwtable tbody tr.alt-row {
+                    background: #f2f7fc;
+                }
+
+            .xwtable td {
+                line-height: 20px;
+                text-align: left;
+                padding: 4px 10px 3px 10px;
+                height: 18px;
+                border: 1px solid #ccc;
+            }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>DevOps平台</h2>
+    <table class="xwtable">
+        <thead>
+            <tr>
+                <td><input type="button" name="更新项目" value="更新项目" id="UpdatePrograme" /></td>
+                <td><input type="button" name="编译项目" value="编译项目" id="BuildPrograme" /></td>
+                <td><input type="button" name="发布版本" value="发布版本" id="PublishPrograme" /></td>
+                <td><input type="button" name="启动服务" value="启动服务" id="StartService" /></td>
+                <td><input type="button" name="关闭服务" value="关闭服务" id="StopService" /></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="update"></td>
+                <td id="build"></td>
+                <td id="publish"></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5"><p style="font-size:9px">Powered By  ©LiYang  OfficialWebsite:http://www.liyang.live </p></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>
