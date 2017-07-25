@@ -1,28 +1,210 @@
 ﻿{
   //允许拷贝发布文件的文件名
-  "AllowCopyFiles": [
+  "ClientAllowCopyFiles": [
     {
-      "FileName": "Lenovo.HIS.IBusiness.DoctorAdvices.dll"
+      "FileName": "Lenovo.HIS.AutoUpdate.dll"
     },
     {
-      "FileName": "Lenovo.HIS.Entities.DoctorAdvices.dll"
+      "FileName": "Lenovo.HIS.Business.Nurse.dll"
     },
     {
       "FileName": "Lenovo.HIS.Common.Patients.dll"
     },
     {
+      "FileName": "Lenovo.HIS.Controls.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Datacom.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.DBRule.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.DoctorRequest.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.Nurse.dll"
+    },
+    {
       "FileName": "Lenovo.HIS.Entities.Patients.dll"
     },
     {
+      "FileName": "Lenovo.HIS.IBusiness.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IBusiness.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IBusiness.DoctorRequest.dll"
+    },
+    {
       "FileName": "Lenovo.HIS.IBusiness.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.InfraCommon.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.InfraReport.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Infrastructure.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IService.Nurse.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.MedicalTemplate.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Report.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.SvgEditor.dll"
+    },
+    {
+      "FileName": "LenovoHisControls.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IService.Nurse.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Plugin.DoctorRequest.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Plugin.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.MedicalTemplate.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Plugin.ElectronicHealthRecord.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Plugin.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Controls.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Plugin.Nurse.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Report.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.Nurse.dll"
     }
   ],
-  "AllowCopyFolders": [
+  "ClientAllowCopyFolders": [
     {
       "FolderName": "AppDll"
     },
     {
       "FolderName": "Plugin"
+    }
+  ],
+  //允许拷贝发布文件的文件名
+  "ServerAllowCopyFiles": [
+    {
+      "FileName": "Lenovo.HIS.Business.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Business.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Business.DoctorRequest.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Business.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Common.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Common.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Datacom.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.DBRule.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.DBRule.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.DBRule.DoctorRequest.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.DBRule.Nurse.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.DBRule.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.DoctorRequest.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.Nurse.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Entities.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IBusiness.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IBusiness.DoctorAdvices.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IBusiness.DoctorRequest.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IBusiness.Patients.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Infrastructure.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.IService.Nurse.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.Service.Nurse.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.SvgEditor.dll"
+    },
+    {
+      "FileName": "Lenovo.HIS.ConsoleHost.DoctorAdvices.exe"
+    },
+    {
+      "FileName": "Lenovo.HIS.ConsoleHost.DoctorRequest.exe"
+    },
+    {
+      "FileName": "Lenovo.HIS.ConsoleHost.exe"
+    },
+    {
+      "FileName": "Lenovo.HIS.ConsoleHost.Patients.exe"
+    },
+    {
+      "FileName": "Lenovo.HIS.ConsoleHost.Nurse.exe"
+    }
+  ],
+  "ServerAllowCopyFolders": [
+    {
+      "FolderName": "AppDll"
     }
   ]
 }

@@ -296,8 +296,8 @@ namespace Space.Modules
         {
             GetConfig();
             string path = Path.Combine(SVNPath, "LenovoClient");
-            string newFileName = @"LenovoClient" + DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss");
-            string newpath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"发布文件\" + newFileName);
+            string newFileName = @"LenovoHIS" + DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss");
+            string newpath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"发布文件\" + newFileName + @"\LenovoClient");
             if (Directory.Exists(newpath))
             {
                 Directory.Delete(newpath, true);
@@ -306,38 +306,90 @@ namespace Space.Modules
             {
                 Directory.CreateDirectory(newpath);
             }
-            directoryCopy(path, newpath);
-            ZipFile.CreateFromDirectory(newpath, newpath + ".zip");
+            ClientDirectoryCopy(path, newpath);
+
+            //LenovoService
+            string LenovoService = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"发布文件\" + newFileName + @"\LenovoService");
+            if (Directory.Exists(LenovoService))
+            {
+                Directory.Delete(LenovoService, true);
+            }
+            if (!Directory.Exists(LenovoService))
+            {
+                Directory.CreateDirectory(LenovoService);
+            }
+            ServerDirectoryCopy(path, LenovoService);
+
+            string zipPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"发布文件\" + newFileName);
+
+            ZipFile.CreateFromDirectory(zipPath, zipPath + ".zip");
 
             return newFileName + ".zip";
         }
 
-        private void directoryCopy(string sourceDirectory, string targetDirectory)
+        private void ClientDirectoryCopy(string sourceDirectory, string targetDirectory)
         {
 
             DirectoryInfo sourceInfo = new DirectoryInfo(sourceDirectory);
             FileInfo[] fileInfo = sourceInfo.GetFiles();
             foreach (FileInfo fiTemp in fileInfo)
             {
-                if (_AllowCopyFile != null && _AllowCopyFile.AllowCopyFiles != null && _AllowCopyFile.AllowCopyFiles.Where(s => s.FileName.ToLower() == fiTemp.Name.ToLower()).Count() > 0)
+                try
                 {
-                    File.Copy(sourceDirectory + "\\" + fiTemp.Name, targetDirectory + "\\" + fiTemp.Name, true);
+                    if (_AllowCopyFile != null && _AllowCopyFile.ClientAllowCopyFiles != null && _AllowCopyFile.ClientAllowCopyFiles.Where(s => s.FileName.ToLower() == fiTemp.Name.ToLower()).Count() > 0)
+                    {
+                        File.Copy(sourceDirectory + "\\" + fiTemp.Name, targetDirectory + "\\" + fiTemp.Name, true);
+                    }
+                    else if (_AllowCopyFile == null || (_AllowCopyFile.ClientAllowCopyFiles == null && _AllowCopyFile.ClientAllowCopyFolders == null))
+                    {
+                        File.Copy(sourceDirectory + "\\" + fiTemp.Name, targetDirectory + "\\" + fiTemp.Name, true);
+                    }
                 }
-                else if (_AllowCopyFile == null || (_AllowCopyFile.AllowCopyFiles == null && _AllowCopyFile.AllowCopyFolders == null))
-                {
-                    File.Copy(sourceDirectory + "\\" + fiTemp.Name, targetDirectory + "\\" + fiTemp.Name, true);
-                }
+                catch (Exception ex) { }
             }
             DirectoryInfo[] diInfo = sourceInfo.GetDirectories();
             foreach (DirectoryInfo diTemp in diInfo)
             {
                 string sourcePath = diTemp.FullName;
                 string targetPath = diTemp.FullName.Replace(sourceDirectory, targetDirectory);
-                if (_AllowCopyFile != null && _AllowCopyFile.AllowCopyFolders != null && _AllowCopyFile.AllowCopyFolders.Where(s => s.FolderName.ToLower() == diTemp.Name.ToLower()).Count() > 0)
+                if (_AllowCopyFile != null && _AllowCopyFile.ClientAllowCopyFolders != null && _AllowCopyFile.ClientAllowCopyFolders.Where(s => s.FolderName.ToLower() == diTemp.Name.ToLower()).Count() > 0)
                 {
                     Directory.CreateDirectory(targetPath);
                 }
-                directoryCopy(sourcePath, targetPath);
+                ClientDirectoryCopy(sourcePath, targetPath);
+            }
+        }
+
+        private void ServerDirectoryCopy(string sourceDirectory, string targetDirectory)
+        {
+
+            DirectoryInfo sourceInfo = new DirectoryInfo(sourceDirectory);
+            FileInfo[] fileInfo = sourceInfo.GetFiles();
+            foreach (FileInfo fiTemp in fileInfo)
+            {
+                try
+                {
+                    if (_AllowCopyFile != null && _AllowCopyFile.ClientAllowCopyFiles != null && _AllowCopyFile.ClientAllowCopyFiles.Where(s => s.FileName.ToLower() == fiTemp.Name.ToLower()).Count() > 0)
+                    {
+                        File.Copy(sourceDirectory + "\\" + fiTemp.Name, targetDirectory + "\\" + fiTemp.Name, true);
+                    }
+                    else if (_AllowCopyFile == null || (_AllowCopyFile.ClientAllowCopyFiles == null && _AllowCopyFile.ClientAllowCopyFolders == null))
+                    {
+                        File.Copy(sourceDirectory + "\\" + fiTemp.Name, targetDirectory + "\\" + fiTemp.Name, true);
+                    }
+                }
+                catch (Exception ex) { }
+            }
+            DirectoryInfo[] diInfo = sourceInfo.GetDirectories();
+            foreach (DirectoryInfo diTemp in diInfo)
+            {
+                string sourcePath = diTemp.FullName;
+                string targetPath = diTemp.FullName.Replace(sourceDirectory, targetDirectory);
+                if (_AllowCopyFile != null && _AllowCopyFile.ClientAllowCopyFolders != null && _AllowCopyFile.ClientAllowCopyFolders.Where(s => s.FolderName.ToLower() == diTemp.Name.ToLower()).Count() > 0)
+                {
+                    Directory.CreateDirectory(targetPath);
+                }
+                ServerDirectoryCopy(sourcePath, targetPath);
             }
         }
 

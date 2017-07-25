@@ -11,10 +11,16 @@ namespace Space.Models
     public class Allowcopyfiles
     {
         [DataMember]
-        public List<Allowcopyfile> AllowCopyFiles { get; set; }
+        public List<Allowcopyfile> ClientAllowCopyFiles { get; set; }
 
         [DataMember]
-        public List<AllowcopyFolder> AllowCopyFolders { get; set; }
+        public List<AllowcopyFolder> ClientAllowCopyFolders { get; set; }
+
+        [DataMember]
+        public List<Allowcopyfile> ServerAllowCopyFiles { get; set; }
+
+        [DataMember]
+        public List<AllowcopyFolder> ServerAllowCopyFolders { get; set; }
     }
 
     [DataContract]
