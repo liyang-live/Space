@@ -192,8 +192,6 @@ namespace Space.Modules
                     se.AcceptedFailures = se.Failures;
                     se.Save = true; // Save acceptance to authentication store
                 });
-                client.GetInfo(repos, out serverInfo);
-                client.GetInfo(SVNPath, out clientInfo);
 
                 //string path = @"C:\Demo";
                 //client.CleanUp(path);
@@ -206,6 +204,9 @@ namespace Space.Modules
 
                 client.CheckOut(repos, SVNPath);
                 client.Update(SVNPath);
+
+                client.GetInfo(repos, out serverInfo);
+                client.GetInfo(SVNPath, out clientInfo);
 
                 List<string> listMsg = new List<string>();
                 SvnLogArgs logArgs = new SvnLogArgs();
